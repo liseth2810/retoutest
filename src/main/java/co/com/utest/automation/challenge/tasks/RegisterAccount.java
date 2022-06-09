@@ -27,4 +27,6 @@ public class RegisterAccount {
         return Tasks.instrumented(FillTheLastStep.class, user);
     }
 
+    private RegisterAccount() {
+    }
 }

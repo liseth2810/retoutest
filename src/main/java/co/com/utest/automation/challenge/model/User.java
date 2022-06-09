@@ -33,7 +33,7 @@ public class User {
             personProperties = PersonProperties.female();
         }
 
-        Fairy fairy = Fairy.create(Locale.forLanguageTag("es"));
+        Fairy fairy = Fairy.create(Locale.forLanguageTag("en"));
         Person person = fairy.person(personProperties, PersonProperties.minAge(18));
         this.firstname = person.getFirstName();
         this.lastname = person.getLastName();

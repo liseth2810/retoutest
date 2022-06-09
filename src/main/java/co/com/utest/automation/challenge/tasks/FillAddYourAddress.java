@@ -6,6 +6,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
+import org.openqa.selenium.Keys;
 
 import static co.com.utest.automation.challenge.userinterface.RegisterStepTwoPage.*;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -24,11 +25,13 @@ public class FillAddYourAddress implements Task {
 
         actor.attemptsTo(
                 WaitUntil.the(SELECT_CITY, isVisible()),
-                Enter.theValue(user.getCity()).into(SELECT_CITY),
-                Enter.theValue(user.getPostalcode()).into(INPUT_POSTAL_CODE),
-                WaitUntil.the(IMG_MAP, isVisible()),
-                Click.on(BUTTON_NEXT_DEVICES)
+                Enter.theValue(user.getCity()).into(SELECT_CITY).thenHit(Keys.TAB)
+        );
 
+        actor.attemptsTo(
+                Enter.theValue(user.getPostalcode()).into(INPUT_POSTAL_CODE),
+                WaitUntil.angularRequestsHaveFinished(),
+                Click.on(BUTTON_NEXT_DEVICES)
         );
     }
 

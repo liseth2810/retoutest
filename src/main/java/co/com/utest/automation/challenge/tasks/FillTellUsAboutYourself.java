@@ -35,12 +35,13 @@ public class FillTellUsAboutYourself implements Task {
                 SelectFromOptions.byVisibleText(user.getBirthyear()).from(SELECT_BIRTH_YEAR)
         );
 
-        user.getIdioms().forEach(language->{
-            actor.attemptsTo(
-                    Enter.theValue(language).into(SELECT_LANGUAGE).thenHit(Keys.ARROW_DOWN).thenHit(Keys.ENTER)
-            );
 
-        });
+        user.getIdioms().forEach(language->
+            actor.attemptsTo(
+                            Enter.theValue(language).into(SELECT_LANGUAGE)
+                                    .thenHit(Keys.ARROW_DOWN)
+                                    .thenHit(Keys.ENTER))
+        );
 
         actor.attemptsTo(
                 Click.on(BUTTON_NEXT)
